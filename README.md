@@ -8,7 +8,7 @@ Implemented from the Claude Design source `Holdem Coach.dc.html`
 
 ## Stack
 
-- **Next.js 15 App Router + React 19**, TypeScript.
+- **Next.js 16 App Router + React 19**, TypeScript.
 - **SSG for every page.** No request-time data, so `next build` prerenders all
   eight content pages (4 pages × 2 locales) plus `robots.txt` and `sitemap.xml`
   to static HTML. `next start` serves them; the output also works behind a CDN.
@@ -52,6 +52,7 @@ src/lib/seo.ts      canonical + hreflang metadata
 src/i18n/           typed dictionaries (en, tr)
 src/components/     Learn (server) · Drill, Showdown, PlayTable (client)
 src/app/[locale]/   locale layout, index (learn) and [page] for the other three
+src/app/global-error.tsx  renders outside the locale layout, so it owns its <html>
 ```
 
 ## Commands
@@ -62,3 +63,7 @@ npm run build      # prerenders every route
 npm start
 npm run typecheck
 ```
+
+`<html>`/`<body>` live in the locale layout rather than the root layout, because
+`lang` has to change per locale. That is why `src/app/global-error.tsx` exists —
+it renders outside the locale layout and must supply its own document shell.

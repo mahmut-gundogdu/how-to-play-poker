@@ -122,7 +122,8 @@ export interface Dict {
     handOver: string;
     youWin: (n: number) => string;
     youSplit: (n: number) => string;
-    theyTake: (names: string, n: number) => string;
+    /** `many` is true when more than one opponent shares the pot. */
+    theyTake: (names: string, n: number, many: boolean) => string;
     whyFold: string;
     whyShowdown: string;
     wonUncontested: string;

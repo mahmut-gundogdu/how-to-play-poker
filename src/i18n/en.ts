@@ -218,7 +218,7 @@ const en: Dict = {
     handOver: 'Hand over',
     youWin: (n) => `You win ${n} chips.`,
     youSplit: (n) => `You split the pot — ${n} chips.`,
-    theyTake: (names, n) => `${names} take ${n}.`,
+    theyTake: (names, n, many) => `${names} ${many ? 'take' : 'takes'} ${n}.`,
     whyFold:
       'Everyone else folded, so the last player standing takes the pot without showing a card. You do not need the best hand — just the last bet nobody called.',
     whyShowdown:

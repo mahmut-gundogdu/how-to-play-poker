@@ -273,7 +273,7 @@ export default function PlayTable({ locale }: { locale: Locale }) {
             const youWon = r.winners.includes('You');
             const title = youWon
               ? (r.winners.length > 1 ? t.play.youSplit(r.share) : t.play.youWin(r.share))
-              : t.play.theyTake(r.winners.map((n) => (n === 'You' ? t.play.you : n)).join(' & '), r.pot);
+              : t.play.theyTake(r.winners.map((n) => (n === 'You' ? t.play.you : n)).join(' & '), r.pot, r.winners.length > 1);
             const lines = r.detail.length
               ? r.detail.map((d) => ({
                   name: d.name === 'You' ? t.play.you : d.name,
